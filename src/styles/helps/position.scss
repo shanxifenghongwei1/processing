@@ -1,0 +1,168 @@
+.relative {
+  position: relative !important;
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.fixed {
+  z-index: 10;
+  position: fixed !important;
+}
+
+/*位置*/
+.top, .top5, .top8, .top10, .top12, .top15, .top20, .top25, .top30, .top35, .top44,
+.left, .left5, .left8, .left10, .left12, .left15, .left20, .left25, .left30, .left35,
+.right, .right5, .right8, .right10, .right12, .right15, .right20, .right25, .right30, .right35,
+.bottom, .bottom5, .bottom8, .bottom10, .bottom12, .bottom15, .bottom20, .bottom25, .bottom30, .bottom35,
+.axis-center, .axis-x-center, .axis-y-center {
+  position: absolute;
+}
+
+.top {
+  top: 0;
+}
+.top5 {
+  top: 5px;
+}
+.top8 {
+  top: 8px;
+}
+.top10 {
+  top: 10px;
+}
+.top12 {
+  top: 12px;
+}
+.top15 {
+  top: 15px;
+}
+.top20 {
+  top: 20px;
+}
+.top25 {
+  top: 25px;
+}
+.top30 {
+  top: 30px;
+}
+.top35 {
+  top: 35px;
+}
+.top44 {
+  top: 44px;
+}
+
+.left {
+  left: 0;
+}
+.left5 {
+  left: 5px;
+}
+.left8 {
+  left: 8px;
+}
+.left10 {
+  left: 10px;
+}
+.left12 {
+  left: 12px;
+}
+.left15 {
+  left: 15px;
+}
+.left20 {
+  left: 20px;
+}
+.left25 {
+  left: 25px;
+}
+.left30 {
+  left: 30px;
+}
+.left35 {
+  left: 35px;
+}
+
+.right {
+  right: 0;
+}
+.right3 {
+  right: 3px;
+}
+.right4 {
+  right: 4px;
+}
+.right5 {
+  right: 5px;
+}
+.right8 {
+  right: 8px;
+}
+.right10 {
+  right: 10px;
+}
+.right12 {
+  right: 12px;
+}
+.right15 {
+  right: 15px;
+}
+.right20 {
+  right: 20px;
+}
+.right25 {
+  right: 25px;
+}
+.right30 {
+  right: 30px;
+}
+.right35 {
+  right: 35px;
+}
+
+.bottom {
+  bottom: 0;
+}
+.bottom5 {
+  bottom: 5px;
+}
+.bottom8 {
+  bottom: 8px;
+}
+.bottom10 {
+  bottom: 10px;
+}
+.bottom12 {
+  bottom: 12px;
+}
+.bottom15 {
+  bottom: 15px;
+}
+.bottom20 {
+  bottom: 20px;
+}
+.bottom25 {
+  bottom: 25px;
+}
+.bottom30 {
+  bottom: 30px;
+}
+.bottom35 {
+  bottom: 35px;
+}
+
+.axis-center{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.axis-x-center{
+  left: 50%;
+  transform: translateX(-50%);
+}
+.axis-y-center{
+  top: 50%;
+  transform: translateY(-50%);
+}

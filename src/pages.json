@@ -1,16 +1,176 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/eagle-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/tab-bar/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/tab-bar/my",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/tab-bar/message",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+		},
+		{
+			"path": "pages/tab-bar/shop",
+			"style": {
+				"navigationBarTitleText": "配件商城"
+			}
+		},
+		{
+			"path": "pages/tab-bar/login",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
 		}
 	],
+	"subPackages": [
+		{
+			"root": "pages/index",
+			"name": "index",
+			"pages": [
+				{
+					"path": "information/information",
+					"style": {
+						"navigationBarTitleText": "参观须知"
+					}
+				},
+				{
+					"path": "citys/city",
+					"style": {
+						"navigationBarTitleText": "选择城市"
+					}
+				},
+				{
+					"path": "search/search",
+					"style": {
+						"navigationBarTitleText": "搜索"
+					}
+				},
+				{
+					"path": "homepage/homepage",
+					"style": {
+						"navigationBarTitleText": "店铺主页"
+					}
+				},
+				{
+					"path": "alltalk/alltalk",
+					"style": {
+						"navigationBarTitleText": "所有评论"
+					}
+				},
+				{
+					"path": "fast/fast",
+					"style": {
+						"navigationBarTitleText": "抢修"
+					}
+				},
+				{
+					"path": "newsdetial/newsdetial",
+					"style": {
+						"navigationBarTitleText": "资讯详情"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/shop",
+			"pages": [
+				{
+					"path": "goods/goods",
+					"style": {
+						"navigationBarTitleText": "商品详情",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "order/order",
+					"style": {
+						"navigationBarTitleText": "提交订单"
+					}
+				},
+				{
+					"path": "payend/payend",
+					"style": {
+						"navigationBarTitleText": "支付成功"
+					}
+				},
+				{
+					"path": "classify/classify",
+					"style": {
+						"navigationBarTitleText": "分类"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/my",
+			"pages": [
+				{
+					"path": "orderlist/orderlist",
+					"style": {
+						"navigationBarTitleText": "煤气订单"
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {
+		"pages/tab-bar/index": {
+			"network": "all",
+			"packages": [
+				"index"
+			]
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTitleText": "燃眉之急",
+		"navigationBarBackgroundColor": "#4782F6",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#808080",
+		"selectedColor": "#4884F4",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [
+			{
+				"pagePath": "pages/tab-bar/index",
+				"iconPath": "/static/tabbar/indexno.png",
+				"selectedIconPath": "/static/tabbar/index.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tab-bar/shop",
+				"iconPath": "/static/tabbar/shopno.png",
+				"selectedIconPath": "/static/tabbar/shop.png",
+				"text": "配件商城"
+			},
+			{
+				"pagePath": "pages/tab-bar/message",
+				"iconPath": "/static/tabbar/messageno.png",
+				"selectedIconPath": "/static/tabbar/message.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/tab-bar/my",
+				"iconPath": "/static/tabbar/myno.png",
+				"selectedIconPath": "/static/tabbar/my.png",
+				"text": "我的"
+			}
+		]
 	}
 }

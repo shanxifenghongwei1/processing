@@ -1,0 +1,45 @@
+.opacity0 {
+  opacity: 0 !important;
+}
+
+.opacity3 {
+  opacity: 0.3 !important;
+}
+
+.height0 {
+  overflow: hidden !important;
+  min-height: 0 !important;
+  height: 0 !important;
+}
+
+.height {
+  height: 100%;
+}
+
+.min-height {
+  min-height: 100%;
+}
+
+.vh100 {
+  height: 100vh;
+}
+
+.min-vh100 {
+  min-height: 100vh;
+}
+
+.vw100 {
+  width: 100vw;
+}
+
+.max-width-full {
+  max-width: 100%;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.width-auto {
+  width: auto !important;
+}

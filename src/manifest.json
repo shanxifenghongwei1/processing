@@ -1,6 +1,6 @@
 {
-	"name": "",
-	"appid": "",
+	"name": "燃眉之急",
+	"appid": "wx265f395e485158a4",
 	"description": "",
 	"versionName": "1.0.0",
 	"versionCode": "100",
@@ -54,10 +54,15 @@
 
 	},
 	"mp-weixin": { /* 微信小程序特有相关 */
-		"appid": "",
+		"appid": "wx265f395e485158a4",
 		"setting": {
 			"urlCheck": false
 		},
+		"permission": {
+			"scope.userLocation": {
+			  "desc": "你的位置将用于展示您附近的商家" // 高速公路行驶持续后台定位
+			}
+		  },
 		"usingComponents": true
 	},
 	"mp-alipay" : {

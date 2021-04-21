@@ -1,0 +1,165 @@
+.color-white {
+  color: #FFFFFF !important;
+  [data-theme="black"] & {
+    color: #212A3D !important;
+  }
+}
+.color-main1 {
+  color: $main-one !important;
+}
+.color-main2{
+  color: $main-two !important;
+}
+.color-assist1{
+  color: $assist-one !important;
+}
+.color-assist2{
+  color: $assist-two !important;
+}
+.color-assist3{
+  color: $assist-three !important;
+}
+.color-assist4{
+  color: $assist-four !important;
+}
+.color-assist5 {
+  color: $assist-five !important;
+}
+.color-deep {
+  color: $deep !important;
+  [data-theme="black"] & {
+    color: #ded5c2 !important;
+  }
+}
+.color-light{
+  color: $light !important;
+}
+.color-middle {
+  color: $middle !important;
+  [data-theme="black"] & {
+    color: #979185 !important;
+  }
+}
+.color-shallow {
+  color: $shallow !important;
+  [data-theme="black"] & {
+    color: #6a6358 !important;
+  }
+}
+.color-divider {
+  color: $divider !important;
+  [data-theme="black"] & {
+    color: #1a1a1a !important;
+  }
+}
+
+// 绿色渐变按钮
+.bg-gradient {
+  background: linear-gradient(to bottom, $assist-one, $assist-two) !important;
+}
+//红色渐变按钮
+.bg-red-gradient{
+  background: linear-gradient(to top, $main-one, $main-two) !important;
+}
+// 使用iconfont 渐变时 加入该样式
+.span-gradient {
+  -webkit-background-clip: text !important;
+  color: transparent;
+}
+
+.line-color-bg{
+  border-color: $bg !important;
+  [data-theme="black"] & {
+    border-color: #070707 !important;
+  }
+}
+.line-color-divider{
+  border-color: $divider !important;
+  [data-theme="black"] & {
+    border-color: #1a1a1a !important;
+  }
+}
+
+
+.line-color-shallow{
+  border-color: $divider !important;
+}
+.line-color-main1{
+  border-color: $main-one !important;
+}
+.line-color-main2{
+  border-color: $main-two !important;
+}
+.line-color-assist1{
+  border-color: $assist-one !important;
+}
+.line-color-assist2{
+  border-color: $assist-two !important;
+}
+.line-color-assist3{
+  border-color: $assist-three !important;
+}
+.line-color-assist4{
+  border-color: $assist-five !important;
+}
+.line-color-assist5{
+  border-color: $assist-five !important;
+}
+
+.bg-black {
+  background-color: #000000 !important;
+  [data-theme="black"] & {
+    background-color: #FFFFFF !important;
+  }
+}
+.bg-white {
+  background-color: #FFFFFF !important;
+  [data-theme="black"] & {
+    background-color: #000000 !important;
+  }
+}
+.bg-main{
+  background-color: $bg !important;
+  [data-theme="black"] & {
+    background-color: #070707 !important;
+  }
+}
+.bg-main1{
+  background: $main-one !important;
+}
+.bg-main2{
+  background: $main-two !important;
+}
+.bg-main3{
+  background: $assist-three !important;
+}
+.bg-assist1{
+  background: $assist-one !important;
+}
+.bg-assist2{
+  background: $assist-two !important;
+}
+.bg-assist4{
+  background: $assist-four !important;
+}
+.bg-light{
+  background: $light !important;
+}
+.bg-shallow {
+  background-color: $shallow !important;
+  [data-theme="black"] & {
+    background-color: #6a6358 !important;
+  }
+}
+.bg-divider {
+  background-color: $divider !important;
+  [data-theme="black"] & {
+    background-color: #1a1a1a !important;
+  }
+}
+.bg-disabled {
+  background-color: #99DBB9 !important;
+}
+.bg-none {
+  background: none !important;
+}

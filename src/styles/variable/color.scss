@@ -1,0 +1,28 @@
+$main-one: #4782f6; // 主色调1
+$main-two: #e15248; // 主色调2
+$assist-one: #f7cb57; // 辅色调1
+$assist-two: #e28e16; // 辅色调2
+$assist-three: #3ac461; // 辅色调3
+$assist-four: #fbb43c; // 辅色调4
+$assist-five: #1b9ef2; // 辅色调5
+$deep: #302e2e; // 文字深
+$middle: #595858; // 文字浅
+$shallow: #808080; // 副文字
+$bg: #f8f8f8; // 背景主色
+$divider: #d9d9d9; // 分割线
+$light: #fde6eb; // 高亮
+
+page {
+  position: relative;
+  min-height: 100%;
+  font-size: 16px;
+  color: $deep;
+  background-color: #ffffff;
+}
+
+* {
+  [data-theme="black"] & {
+    color: #ded5c2;
+    background-color: #000000;
+  }
+}

@@ -12,6 +12,7 @@
 	}
 </script>
 
-<style>
-	/*每个页面公共css */
+<style lang="scss">
+  @import 'eagle-ui/style/index.scss';
+  @import 'styles/base.scss';
 </style>

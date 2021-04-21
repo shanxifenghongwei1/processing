@@ -1,0 +1,25 @@
+// variable
+@import "./variable/color.scss";
+
+// helps
+@import "./helps/color.scss";
+@import "./helps/font.scss";
+@import "./helps/margin.scss";
+@import "./helps/padding.scss";
+@import "./helps/position.scss";
+@import "./helps/width.scss";
+@import "./helps/common.scss";
+@import "./helps/box.scss";
+@import "./helps/iconfont.scss";
+
+button::after {
+  border-color: rgba(0, 0, 0, 0);
+}
+
+[uni-page-head-type="default"] * {
+  user-select: none;
+}
+
+.bottom-btn button {
+  border-radius: 0 !important;
+}
