@@ -18,12 +18,15 @@ export default {
     return {};
   },
   props: {
-    item: Object,
+    item: {
+      type: Object,
+      default: {},
+    },
   },
   methods: {
     runpage() {
       uni.navigateTo({
-        url: "/pages/shop/goods/goods",
+        url: `/pages/shop/goods/goods?goods_id=${this.item.goods_id}`,
       });
     },
   },

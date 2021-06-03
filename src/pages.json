@@ -112,6 +112,43 @@
 					"style": {
 						"navigationBarTitleText": "分类"
 					}
+				},
+				{
+					"path": "pjgooods/pjgooods",
+					"style": {
+						"navigationBarTitleText": "商品详情",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "pjorder/pjorder",
+					"style": {
+						"navigationBarTitleText": "配件订单"
+					}
+				},
+				{
+					"path": "shopcoupon/shopcoupon",
+					"style": {
+						"navigationBarTitleText": "可用优惠券"
+					}
+				},
+				{
+					"path": "allcommit/allcommit",
+					"style": {
+						"navigationBarTitleText": "所有评价"
+					}
+				},
+				{
+					"path": "pjhomepage/pjhomepage",
+					"style": {
+						"navigationBarTitleText": "店铺主页"
+					}
+				},
+				{
+					"path": "mycat/mycat",
+					"style": {
+						"navigationBarTitleText": "购物车"
+					}
 				}
 			]
 		},
@@ -122,6 +159,138 @@
 					"path": "orderlist/orderlist",
 					"style": {
 						"navigationBarTitleText": "煤气订单"
+					}
+				},
+				{
+					"path": "address/address",
+					"style": {
+						"navigationBarTitleText": "地址管理"
+					}
+				},
+				{
+					"path": "addaddress/addaddress",
+					"style": {
+						"navigationBarTitleText": "新增地址"
+					}
+				},
+				{
+					"path": "useradmin/useradmin",
+					"style": {
+						"navigationBarTitleText": "骑手登录"
+					}
+				},
+				{
+					"path": "userinfo/userinfo",
+					"style": {
+						"navigationBarTitleText": "填写信息"
+					}
+				},
+				{
+					"path": "userlook/userlook",
+					"style": {
+						"navigationBarTitleText": "接单台"
+					}
+				},
+				{
+					"path": "mycounps/mycounps",
+					"style": {
+						"navigationBarTitleText": "我的优惠券"
+					}
+				},
+				{
+					"path": "pjorderlist/pjorderlist",
+					"style": {
+						"navigationBarTitleText": "配件订单"
+					}
+				},
+				{
+					"path": "orderdetail/orderdetail",
+					"style": {
+						"navigationBarTitleText": "煤气订单详情"
+					}
+				},
+				{
+					"path": "map/map",
+					"style": {
+						"navigationBarTitleText": "map"
+					}
+				},
+				{
+					"path": "outorder/outorder",
+					"style": {
+						"navigationBarTitleText": "退瓶/抢修"
+					}
+				},
+				{
+					"path": "olduserbuy/olduserbuy",
+					"style": {
+						"navigationBarTitleText": "老用户订气"
+					}
+				},
+				{
+					"path": "usertalkgoods/usertalkgoods",
+					"style": {
+						"navigationBarTitleText": "评价订单"
+					}
+				},
+				{
+					"path": "wuliu/wuliu",
+					"style": {
+						"navigationBarTitleText": "物流"
+					}
+				},
+				{
+					"path": "pjorderdetail/pjorderdetail",
+					"style": {
+						"navigationBarTitleText": "订单详情"
+					}
+				},
+				{
+					"path": "pjusertalkgoods/pjusertalkgoods",
+					"style": {
+						"navigationBarTitleText": "评价"
+					}
+				},
+				{
+					"path": "adminorderdetial/adminorderdetial",
+					"style": {
+						"navigationBarTitleText": "骑手端订单详情"
+					}
+				},
+				{
+					"path": "adminmakeitem/adminmakeitem",
+					"style": {
+						"navigationBarTitleText": "订单明细"
+					}
+				},
+				{
+					"path": "wantgive/wantgive",
+					"style": {
+						"navigationBarTitleText": "商家入驻"
+					}
+				},
+				{
+					"path": "songqiruzhu/songqiruzhu",
+					"style": {
+						"navigationBarTitleText": "送气站入驻"
+					}
+				},
+				{
+					"path": "peijianruzhu/peijianruzhu",
+					"style": {
+						"navigationBarTitleText": "配件商户入驻"
+					}
+				},
+				{
+					"path": "guandaoruzhu/guandaoruzhu",
+					"style": {
+						"navigationBarTitleText": "燃气工程入驻"
+					}
+				},
+				{
+					"path": "tuipingye/tuipingye",
+					"style": {
+						"navigationBarTitleText": "退瓶信息"
 					}
 				}
 			]

@@ -1,6 +1,11 @@
 <template>
   <view class="pl15 pr15">
-    <talkitem></talkitem>
+    <talkitem
+      v-for="(item, index) in commonlist"
+      :key="index"
+      :item="item"
+    ></talkitem>
+    <u-divider v-if="total !== 0" bg-color="">{{ moreTip }}</u-divider>
   </view>
 </template>
 
@@ -10,13 +15,43 @@ export default {
   components: {
     talkitem,
   },
-  data: () => ({}),
+  data: () => ({
+    shop_id: 0,
+    commonlist: [],
+    pages: 1,
+    isPullUp: false,
+    moreTip: "",
+    total: 0,
+  }),
   computed: {},
-  methods: {},
+  methods: {
+    getallcommon(id) {
+      this.$u.api.newsService
+        .shopallComment({
+          page: this.pages,
+          shop_id: this.shop_id,
+        })
+        .then((res) => {
+          if (res.code === "200") {
+            this.commonlist = this.commonlist.concat(res.data.commentInfo);
+            this.total = res.data.count;
+            if (res.data.count > this.commonlist.length) {
+              this.isPullUp = true;
+            } else {
+              this.isPullUp = false;
+              this.moreTip = "我也是有底线的";
+            }
+          }
+        });
+    },
+  },
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    this.shop_id = options.shop_id;
+    this.getallcommon(options.shop_id);
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)
@@ -30,7 +65,15 @@ export default {
     uni.stopPullDownRefresh();
   },
   // 页面处理函数--监听用户上拉触底
-  onReachBottom() {},
+  onReachBottom() {
+    if (this.isPullUp) {
+      this.pages++;
+      this.getallcommon();
+    } else {
+      this.isPullUp = false;
+      this.moreTip = "我也是有底线的";
+    }
+  },
   // 页面处理函数--监听页面滚动(not-nvue)
   /* onPageScroll(event) {}, */
   // 页面处理函数--用户点击右上角分享

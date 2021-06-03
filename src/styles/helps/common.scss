@@ -1,21 +1,21 @@
 /* 圆角 */
-.br0{
+.br0 {
   border-radius: 0 !important;
 }
 
-.br3{
+.br3 {
   border-radius: 6px;
 }
 
-.br5{
+.br5 {
   border-radius: 5px;
 }
 
-.br8{
+.br8 {
   border-radius: 8px;
 }
 
-.br10{
+.br10 {
   border-radius: 10px;
 }
 
@@ -23,33 +23,37 @@
   border-radius: 20px;
 }
 
-.br30{
+.br30 {
   border-radius: 30px;
 }
 
-.br50{
+.br50 {
   border-radius: 50%;
 }
 
-.br100{
+.br100 {
   border-radius: 100%;
 }
 
-.br8800{
+.br8800 {
   border-radius: 8px 8px 0 0;
 }
 
 /* 划线 */
-.line-none{ // 无装饰
+.line-none {
+  // 无装饰
   text-decoration: none;
 }
-.line-underline{ // 下划线
+.line-underline {
+  // 下划线
   text-decoration: underline;
 }
-.line-overline{ // 上划线
+.line-overline {
+  // 上划线
   text-decoration: overline;
 }
-.line-through{ // 贯穿线
+.line-through {
+  // 贯穿线
   text-decoration: line-through;
 }
 
@@ -125,8 +129,8 @@
   word-wrap: break-word;
   word-break: break-all;
   display: -webkit-box;
-  -webkit-line-clamp: ceil(4);
-  line-clamp: ceil(4);
+  -webkit-line-clamp: ceil(1);
+  line-clamp: ceil(1);
   -webkit-box-orient: vertical;
 }
 .align-center {
@@ -137,7 +141,7 @@
   justify-content: center;
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: 0 3px 15px rgba(149, 156, 167, 0.15);
 }
 
@@ -157,20 +161,20 @@
   clear: both;
 }
 
-button{
+button {
   border: none;
-  &::after{
+  &::after {
     border: 0;
   }
 }
 
-image{
+image {
   height: 0;
 }
 
 /* Vertical Align Helpers */
 .border-box {
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 .text-right {
   text-align: right;
@@ -188,7 +192,7 @@ image{
   text-align: center;
 }
 
-.b-b-1{
+.b-b-1 {
   border-bottom: 1px solid;
 }
 
@@ -204,4 +208,3 @@ image{
 ::-webkit-scrollbar {
   display: none;
 }
-

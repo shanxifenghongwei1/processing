@@ -5,7 +5,7 @@ export default {
   // service: 'http://10.10.1.99:8087/api',
   // service: 'http://10.10.1.7:8190/api',
   // service: 'https://huangyunxin91.utools.club/api',
-  service: 'http://coalwas.gege12.vip',
+  service: 'https://coalwas.gege12.vip',
   imageUrl:
     process.env.NODE_ENV === 'production'
       ? 'https://tybwgdl.oss-cn-zhangjiakou.aliyuncs.com/'

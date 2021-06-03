@@ -1,7 +1,7 @@
 <template>
   <view class="u-wrap">
     <view class="u-search-box">
-      <view class="u-search-inner" @click="runpage(1)">
+      <view class="u-search-inner" @click="runpage(1, 0)">
         <u-icon name="search" color="#909399" :size="28"></u-icon>
         <text class="u-search-text">搜索</text>
       </view>
@@ -48,7 +48,7 @@
                 :key="index1"
               >
                 <image
-                  @click="runpage(2)"
+                  @click="runpage(2, item1.type_id)"
                   class="item-menu-image"
                   :src="item1.icon"
                   mode=""
@@ -63,7 +63,7 @@
   </view>
 </template>
 <script>
-import classifyData from "@/common/utils/classify.data.js";
+// import classifyData from "@/common/utils/classify.data.js";
 export default {
   data() {
     return {
@@ -73,27 +73,37 @@ export default {
       menuHeight: 0, // 左边菜单的高度
       menuItemHeight: 0, // 左边菜单item的高度
       itemId: "", // 栏目右边scroll-view用于滚动的id
-      tabbar: classifyData,
+      tabbar: [],
       menuItemPos: [],
       arr: [],
       scrollRightTop: 0, // 右边栏目scroll-view的滚动条高度
       timer: null, // 定时器
     };
   },
-  onLoad() {},
+  onLoad() {
+    this.getleftlist();
+  },
   onReady() {
     this.getMenuItemTop();
   },
   methods: {
+    // 获取左侧
+    getleftlist() {
+      this.$u.api.goodsService.leftlist().then((res) => {
+        if (res.code === "200") {
+          this.tabbar = res.data;
+        }
+      });
+    },
     // 点击商品图片
-    runpage(e) {
+    runpage(e, id) {
       if (e === 1) {
         uni.navigateTo({
           url: "/pages/index/search/search",
         });
       } else {
         uni.navigateTo({
-          url: "/pages/shop/classify/classify",
+          url: `/pages/shop/classify/classify?type_id=${id}`,
         });
       }
     },

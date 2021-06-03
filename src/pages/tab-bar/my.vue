@@ -1,19 +1,22 @@
 <template>
   <view>
     <view class="bg-white pl15 pt15 pb15">
-      <view class="flex">
+      <view class="flex" v-if="vuex_islogin">
         <view class="">
-          <image class="hend" :src="src" mode="" />
+          <image class="hend" :src="vuex_user.img" mode="" />
         </view>
         <view class="pl15 flex-1 flex flex-col flex-center">
-          <view class="fs20 fw600">姓名</view>
-          <view class="fs14 fw400">18435170200</view>
+          <view class="fs20 fw600">{{ vuex_user.name }}</view>
+          <view class="fs14 fw400">{{ vuex_user.tel || "暂无" }}</view>
         </view>
       </view>
-      <view>
-        <button open-type="getUserInfo" @getuserinfo="bindGetUserInfo">
+
+      <view v-else>
+        <!-- <button @click="getuser">
           登录
-        </button>
+        </button> -->
+
+        <u-button @click="bindGetUserInfo" type="primary">登 录</u-button>
       </view>
     </view>
     <!-- 下面的横向列表 -->
@@ -26,7 +29,7 @@
       </view>
       <view class="flex flex-around pt20 pb15">
         <view v-for="item in list1" :key="item.id">
-          <view class="flex flex-center mb5" @click="runpages">
+          <view class="flex flex-center mb5" @click="runpages(item.id)">
             <image
               class="block"
               style="width:40rpx;height:40rpx;"
@@ -41,7 +44,10 @@
       </view>
       <!-- 老用户一键定气 -->
       <view class="pl15 pr15">
-        <view class="flex flex-between pl15 pr15 pt20 pb20 newbg">
+        <view
+          class="flex flex-between pl15 pr15 pt20 pb20 newbg"
+          @click="runoldpage"
+        >
           <view>
             <image
               style="width:40rpx;height:40rpx;"
@@ -144,32 +150,70 @@ export default {
           image: "/static/my/list/lx.png",
         },
       ],
+      olouser_id: 0,
     };
   },
   methods: {
-    runpageaaa() {
-      uni.navigateTo({
-        url: "/pages/my/orderlist/orderlist",
-      });
+    runoldpage() {
+      this.$u.api.goodsService
+        .olduserdingqi({ user_id: this.vuex_user.user_id })
+        .then((res) => {
+          if (res.code === "200") {
+            this.olouser_id = res.data;
+            uni.navigateTo({
+              url: `/pages/my/olduserbuy/olduserbuy?goods_id=${this.olouser_id}`,
+            });
+          } else {
+            this.olouser_id = 0;
+          }
+        });
     },
-    runpages() {
-      uni.navigateTo({
-        url: "/pages/my/orderlist/orderlist",
-      });
+    runpageaaa(e) {
+      if (e === 5) {
+        uni.navigateTo({
+          url: "/pages/my/address/address",
+        });
+      } else if (e === 4) {
+        uni.navigateTo({
+          url: "/pages/my/useradmin/useradmin",
+        });
+      } else if (e === 2) {
+        uni.navigateTo({
+          url: "/pages/my/mycounps/mycounps",
+        });
+      } else if (e === 1) {
+        uni.navigateTo({
+          url: "/pages/my/pjorderlist/pjorderlist",
+        });
+      } else if (e === 3) {
+        uni.navigateTo({
+          url: "/pages/my/wantgive/wantgive",
+        });
+      } else {
+        uni.navigateTo({
+          url: `/pages/my/orderlist/orderlist?current=${0}`,
+        });
+      }
     },
-    bindGetUserInfo(e) {
-      console.log(e);
-      let that = this;
-      uni.login({
-        provider: "weixin",
-        success: (res) => {
-          uni.getUserInfo({
+    runpages(e) {
+      if (e === 4) {
+        uni.navigateTo({
+          url: "/pages/my/outorder/outorder",
+        });
+      } else {
+        uni.navigateTo({
+          url: `/pages/my/orderlist/orderlist?current=${e}`,
+        });
+      }
+    },
+    bindGetUserInfo() {
+      uni.getUserProfile({
+        desc: "将用于您的登录头像名字展示",
+        success: (info) => {
+          console.log(info);
+          uni.login({
             provider: "weixin",
-            success: (info) => {
-              //这里请求接口
-              // &code=001NYPFa1tJwMA0bT9Ha1Gli5X0NYPFt/
-              console.log("info:::", info.userInfo);
-
+            success: (res) => {
               this.$u.api.userService
                 .login({
                   code: res.code,
@@ -177,14 +221,13 @@ export default {
                   img: info.userInfo.avatarUrl,
                 })
                 .then((res) => {
-                  console.log("成功了");
-                  this.$u.vuex("vuex_user", info.userInfo);
-                  this.$u.vuex("vuex_islogin", true);
+                  console.log("成功了", res);
+                  if (res.code === 200) {
+                    this.$u.vuex("vuex_user", res.data);
+                    this.$u.vuex("vuex_islogin", true);
+                    this.userinfo = res.data;
+                  }
                 });
-              // console.log("res:::", res);
-            },
-            fail: () => {
-              uni.showToast({ title: "微信登录授权失败", icon: "none" });
             },
           });
         },
@@ -193,6 +236,42 @@ export default {
         },
       });
     },
+    // getuser() {
+    //   // 获取用户信息
+    //   let that = this;
+    //   uni.login({
+    //     provider: "weixin",
+    //     success: (res) => {
+    //       uni.getUserProfile({
+    //         desc: "将用于您的登录头像名字展示",
+    //         success: (info) => {
+    //           //这里请求接口
+    //           console.log("info:::", info.userInfo);
+    //           this.$u.api.userService
+    //             .login({
+    //               code: res.code,
+    //               name: info.userInfo.nickName,
+    //               img: info.userInfo.avatarUrl,
+    //             })
+    //             .then((res) => {
+    //               console.log("成功了", res);
+    //               if (res.code === 200) {
+    //                 this.$u.vuex("vuex_user", res.data);
+    //                 this.$u.vuex("vuex_islogin", true);
+    //                 this.userinfo = res.data;
+    //               }
+    //             });
+    //         },
+    //         fail: () => {
+    //           uni.showToast({ title: "微信登录授权失败", icon: "none" });
+    //         },
+    //       });
+    //     },
+    //     fail: () => {
+    //       uni.showToast({ title: "微信登录授权失败", icon: "none" });
+    //     },
+    //   });
+    // },
   },
 };
 </script>

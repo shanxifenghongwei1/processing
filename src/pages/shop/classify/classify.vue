@@ -19,41 +19,47 @@
         :is-scroll="false"
         :current="current"
         @change="change"
-      ></u-tabs>
+      >
+      </u-tabs>
 
-      <view class="pt15 pl15 pr15 flex" v-for="i in 10">
+      <view
+        class="pt15 pl15 pr15 flex"
+        v-for="(item, index) in goodslist"
+        :key="index"
+        @click="rundetail(item.goods_id)"
+      >
         <image
           class="block br5"
           style="width:180rpx;height:180rpx;"
-          src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4283265346,1280694101&fm=11&gp=0.jpg"
+          :src="item.goods_img"
           mode=""
         />
         <view class="pl15 flex-1 flex flex-col flex-between">
-          <view class="exceed-ellipsis2"
-            >商品名称名称商品名称名称商品名称名称商品名称名称商品名称名称商品名称名称商品名称名称</view
-          >
+          <view class="exceed-ellipsis2">{{ item.goods_name }}</view>
           <view class="flex flex-between">
             <view style="color:#FF442A;" class="fs18 fw600"
-              ><span class="fw100 fs12">￥</span>300</view
+              ><span class="fw100 fs12">￥</span>{{ item.goods_retail }}</view
             >
-            <image
+            <view></view>
+            <!-- <image
+              @click="addcat()"
               class="block br5"
               style="width:40rpx;height:40rpx;"
               src="/static/shop/jiahao.png"
               mode=""
-            />
+            /> -->
           </view>
         </view>
       </view>
       <!-- 悬浮球 -->
-      <view class="bgxf fs14" @click="gopage">
+      <!-- <view class="bgxf fs14" @click="gopage">
         <image
           class="block br5"
           style="width:150rpx;height:150rpx;"
           src="/static/shop/gouwuche.png"
           mode=""
         />
-      </view>
+      </view> -->
     </view>
   </view>
 </template>
@@ -76,38 +82,97 @@ export default {
     list: [
       {
         name: "综合推荐",
+        tabs: 0,
       },
       {
         name: "销量",
+        tabs: 1,
       },
       {
         name: "价格",
+        tabs: 2,
       },
       {
         name: "分类",
+        tabs: 3,
       },
     ],
+    sales: false,
+    price: false,
+    goodslist: [],
   }),
   computed: {},
   methods: {
+    // 调转购物车
+    gopage() {
+      uni.navigateTo({
+        url: "/pages/shop/mycat/mycat",
+      });
+    },
+    addcat() {},
+    getgoodslist(e) {
+      //综合推荐
+      // this.$u.api.goodsService.productsall({ type_id: e }).then((res) => {
+      //   if (res.code === "200") {
+      //     // console.log("商品搜索成功：：", res.data);
+      //     this.goodslist = res.data;
+      //   }
+      // });
+      // 综合推荐无数据暂时弄成销量接口
+      this.getgoos(0);
+    },
     change(e) {
       this.current = e;
+      if (e === 1) {
+        this.sales = !this.sales;
+        this.getgoos(this.sales ? 0 : 1);
+      } else if (e === 2) {
+        this.price = !this.price;
+        this.getgoos(this.price ? 0 : 1);
+      } else if (e === 3) {
+        uni.navigateBack();
+      }
     },
     searchs() {
       this.$u.api.goodsService
         .search({ goods_name: this.value })
         .then((res) => {
           if (res.code === "200") {
-            console.log("商品搜索成功：：", res.data);
             this.goodslist = res.data;
           }
         });
     },
+
+    // 销量
+    getgoos(id) {
+      // 0正序，1倒叙
+      this.$u.api.goodsService.sales({ sortid: id }).then((res) => {
+        if (res.code === "200") {
+          this.goodslist = res.data;
+        }
+      });
+    },
+    // 价格
+    getgoodsprice(id) {
+      this.$u.api.goodsService.sales({ sortid: id }).then((res) => {
+        if (res.code === "200") {
+          this.goodslist = res.data;
+        }
+      });
+    },
+    rundetail(goods_id) {
+      uni.navigateTo({
+        url: `/pages/shop/pjgooods/pjgooods?goods_id=${goods_id}`,
+      });
+    },
   },
+  //
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    this.getgoodslist(options.type_id);
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)

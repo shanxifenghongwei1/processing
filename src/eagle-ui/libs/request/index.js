@@ -39,7 +39,7 @@ class Request {
 					// 判断是否存在拦截器
 					if (this.interceptor.response && typeof this.interceptor.response === 'function') {
 						let resInterceptors = this.interceptor.response(response);
-						console.log('拦截器中的东西',response)
+						// console.log('拦截器中的东西',response)
 						// 如果拦截器不返回false，就将拦截器返回的内容给this.$u.post的then回调
 						if (resInterceptors !== false) {
 							resolve(resInterceptors);

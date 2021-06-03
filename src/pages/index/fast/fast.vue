@@ -11,7 +11,7 @@
           ><u-input
             placeholder="请输入联系人姓名"
             :custom-style="custal"
-            v-model="name"
+            v-model="linkman"
             type="text"
         /></view>
       </view>
@@ -21,7 +21,7 @@
           ><u-input
             placeholder="请输入联系电话"
             :custom-style="custal"
-            v-model="name"
+            v-model="tel"
             type="text"
         /></view>
       </view>
@@ -31,13 +31,14 @@
           ><u-input
             placeholder="输入地址"
             :custom-style="custal"
-            v-model="name"
+            v-model="address"
             type="text"
         /></view>
       </view>
       <view class="pt30 pl30 pr30">
         <u-button type="primary" @click="go">提交</u-button>
       </view>
+      <u-toast ref="uToast" />
     </view>
   </view>
 </template>
@@ -46,7 +47,10 @@
 export default {
   components: {},
   data: () => ({
-    name: "",
+    linkman: "",
+    tel: "",
+    address: "",
+    shop_id: 0,
     custal: {
       backgroundColor: "#f8f8f8",
       "padding-left": "30rpx",
@@ -54,12 +58,36 @@ export default {
   }),
   computed: {},
   methods: {
-    go() {},
+    go() {
+      this.$u.api.newsService
+        .userrepair({
+          shop_id: this.shop_id,
+          linkman: this.linkman,
+          tel: this.tel,
+          address: this.address,
+        })
+        .then((res) => {
+          if (res.code === "200") {
+            this.$refs.uToast.show({
+              title: "操作成功",
+              callback: () => {
+                uni.navigateBack();
+              },
+              // 如果不传此type参数，默认为default，也可以手动写上 type: 'default'
+              // type: 'success',
+              // 如果不需要图标，请设置为false
+              // icon: false
+            });
+          }
+        });
+    },
   },
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    this.shop_id = options.shop_id;
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)

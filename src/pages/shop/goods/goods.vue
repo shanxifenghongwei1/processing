@@ -3,18 +3,17 @@
     <view @click="navito" class="fixed topleft fs20">
       <u-icon name="arrow-left" color="#FFF"></u-icon>
     </view>
-    <image
-      style="width:100%;"
-      src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4283265346,1280694101&fm=11&gp=0.jpg"
-      mode="widthFix"
-    />
+    <image style="width:100%;" :src="detial.goods_img" mode="widthFix" />
     <view class="p15 ">
       <view class="p15 bg-white br5">
-        <view class="fs18 fw600">商品名字很长的</view>
+        <view class="fs18 fw600">{{ detial.goods_name }}</view>
         <view class="mt15 flex flex-between">
-          <view class="fw600" style="color:#FF442A;"> <span>￥</span>1600</view>
+          <view class="fw600" style="color:#FF442A;">
+            <span>￥</span>{{ detial.goods_retail }}</view
+          >
           <view style="color:#FF7404" class="flex fw600">
-            <u-icon name="star-fill" color="#FF7404"></u-icon> <view>4.5</view>
+            <u-icon name="star-fill" color="#FF7404"></u-icon>
+            <view>{{ detial.goods_score }}</view>
           </view>
         </view>
       </view>
@@ -23,10 +22,17 @@
     <view class="p15">
       <view class="p15 bg-white br5">
         <view class="fw600 pb10">商品详情</view>
-        <view>下面的文字和图片</view>
+        <view class=" pr15">
+          <image
+            style="width-full"
+            :src="detial.goods_describe"
+            mode="widthFix"
+          />
+        </view>
       </view>
     </view>
     <!-- 下面的tabbar -->
+    <view style="height:200rpx"></view>
     <view
       class="fixed left bottom flex flex-around pt10 pb10 pl15 pr15 width-full bg-white"
     >
@@ -60,12 +66,15 @@
 <script>
 export default {
   components: {},
-  data: () => ({}),
+  data: () => ({
+    goods_id: 0,
+    detial: {},
+  }),
   computed: {},
   methods: {
     runpage() {
       uni.redirectTo({
-        url: "/pages/index/homepage/homepage",
+        url: `/pages/index/homepage/homepage?shop_id=${this.detial.shop_id}`,
       });
     },
     navito() {
@@ -73,14 +82,28 @@ export default {
     },
     runorder() {
       uni.navigateTo({
-        url: "/pages/shop/order/order",
+        url: `/pages/shop/order/order?goods_id=${this.detial.goods_id}`,
       });
+    },
+    getgoodsdetial(goods_id) {
+      this.$u.api.goodsService
+        .goodsdetails({ goods_id: goods_id })
+        .then((res) => {
+          if (res.code === "200") {
+            console.log("商品搜索成功：：", res.data);
+            this.detial = res.data;
+          }
+        });
     },
   },
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    // goods_id
+    this.goods_id = options.goods_id;
+    this.getgoodsdetial(options.goods_id);
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)

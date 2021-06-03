@@ -3,7 +3,7 @@ import { getCurrentPageUrlWithArgs } from 'eagle-ui/libs/function/common-methods
 // 这里的vm，就是我们在vue文件里面的this，所以我们能在这里获取vuex的变量，比如存放在里面的token
 // 同时，我们也可以在此使用getApp().globalData，如果你把token放在getApp().globalData的话，也是可以使用的
 const install = (Vue, vm) => {
-  console.log($config.service)
+  // console.log($config.service)
   Vue.prototype.$u.http.setConfig({
     baseUrl: $config.service.replace('/api', ''),
     originalData: true
@@ -19,7 +19,7 @@ const install = (Vue, vm) => {
     //   config.data = null
     //   config.header['Content-Type'] = 'application/x-www-form-urlencoded'
     // }
-    console.log(config.data)
+    // console.log(config.data)
     return config
   }
   // 响应拦截，判断状态码是否通过

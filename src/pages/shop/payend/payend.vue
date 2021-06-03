@@ -13,7 +13,7 @@
         />
         <view class="ml5 fs20 fw600">支付成功</view>
       </view>
-      <view class="pt15 pb15">实付￥124.6</view>
+      <view class="pt15 pb15">实付￥{{ money }}</view>
       <view class="flex pt15 pb15 pl15 pr15 flex-around"
         ><view
           @click="runpage(1)"
@@ -33,7 +33,9 @@
 <script>
 export default {
   components: {},
-  data: () => ({}),
+  data: () => ({
+    money: 0,
+  }),
   computed: {},
   methods: {
     runpage(e) {
@@ -42,12 +44,19 @@ export default {
           url: "/pages/tab-bar/index",
         });
       }
+      if (e === 2) {
+        uni.reLaunch({
+          url: "/pages/my/orderlist/orderlist",
+        });
+      }
     },
   },
   watch: {},
 
   // 页面周期函数--监听页面加载
-  onLoad() {},
+  onLoad(options) {
+    this.money = options.money;
+  },
   // 页面周期函数--监听页面初次渲染完成
   onReady() {},
   // 页面周期函数--监听页面显示(not-nvue)
